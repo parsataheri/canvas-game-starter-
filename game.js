@@ -107,6 +107,29 @@ let update = function () {
   if (39 in keysDown) { // Player is holding right key
     heroX += 5;
   }
+  
+  if (heroX <= 0 ) {
+    console.log("I move left off the screen")
+    heroX = canvas.width -20
+  }
+
+  if (heroX >= 500) {
+    console.log("I move right off the screen")
+    heroX = 10
+  }
+
+  if (heroY <= 0 ) {
+    console.log("I move up the screen")
+    heroY = canvas.width -20
+  }
+
+  if (heroY >= 500) {
+    console.log("I move down the screen")
+    heroY = 10
+  }
+  
+
+
 
   // Check if player and monster collided. Our images
   // are about 32 pixels big.
@@ -118,10 +141,12 @@ let update = function () {
   ) {
     // Pick a new location for the monster.
     // Note: Change this to place the monster at a new, random location.
-    monsterX = monsterX + 50;
+    monsterX = Math.ceil(Math.random() * (30 - 20) + 10) 
+    console.log("random")
+    // console.log("random" , )
     monsterY = monsterY + 70;
   }
-};
+}
 
 /**
  * This function, render, runs as often as possible.
